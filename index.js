@@ -33,6 +33,7 @@ app.post('/songs', async (req, res) => {
         title: "La Mer",
         artist: "Claude Debussy",
         genre: "classical",
+        year: 1905,
     });
 
     //save to database
