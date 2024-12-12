@@ -34,9 +34,15 @@
 
 ![Alt text](imgs/post.jpg)
 
+## **Get**
+
+![Alt text](imgs/get.jpg)
+
 ## **cloud.mongodb.com** 
 
 ![Alt text](imgs/mongo-com.jpg)
+
+![Alt text](imgs/users.jpg)
 
 ## **Bonus:** 
 - deploy to render.com. You will need to set up the environment on render.com and set up the whitelist on mongodb.com
