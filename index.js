@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Song = require("./models/songs"); 
+const User = require("./models/users")
 const app = express();
 const port = 3002;
 
@@ -44,6 +45,19 @@ app.post('/songs', async (req, res) => {
     res.json(savedSong);
 
 });
+
+app.get('/users', async (req, res) => {
+    const theUser = new User({
+        name: "Liz Taylor",
+        email: "ltaylor@gmail.com",
+        birthMonth: "February",
+        isActive: "true",
+    });
+    const savedUser = await theUser.save();
+    console.log(savedUser);
+
+    res.json(savedUser);
+})
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);

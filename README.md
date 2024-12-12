@@ -38,4 +38,11 @@
 
 ![Alt text](imgs/mongo-com.jpg)
 
+## **Bonus:** 
+- deploy to render.com. You will need to set up the environment on render.com and set up the whitelist on mongodb.com
+
+![Alt text](imgs/render-hello.jpg)
+
+![Alt text](imgs/render-live.jpg)
+
 
