@@ -46,18 +46,60 @@ app.post('/songs', async (req, res) => {
 
 });
 
+// Get all users
 app.get('/users', async (req, res) => {
-    const theUser = new User({
-        name: "Liz Taylor",
-        email: "ltaylor@gmail.com",
-        birthMonth: "February",
-        isActive: "true",
-    });
-    const savedUser = await theUser.save();
-    console.log(savedUser);
+    try {
+        const users = await User.find();
+        res.json(users);
+    } catch(error) {
+        res.status(500).json({
+            message: 'error fetching users' });
+    }
+});
 
-    res.json(savedUser);
+
+app.delete('/users/:Id', async (req, res) => {
+    try {
+        const userId  = req.params.Id;
+        console.log(userId);
+        const deletedUser = await User.deleteOne({ _id: userId }); // Delete the user by ID
+        res.json(deletedUser);
+    } catch (error) {
+        console.log(error);
+        res.json({message: "error deleting user"})
+    }
 })
+
+    //  Update a User by Id
+app.put('/users/:Id', async (req, res) => {
+    const userId  = req.params.Id;
+    console.log(userId);
+    const updatedData = req.body; 
+            try {
+    const updatedUser = await User.findByIdAndUpdate(userId, updatedData, { new: true });
+            if (!updatedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(updatedUser);
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating user' });
+    }
+});
+
+//  Deactivate User
+app.put('/users/:Id/deactivate', async (req, res) => {
+    const userId  = req.params.Id;
+    try {
+        const deactivatedUser = await User.findByIdAndUpdate(userId, { isActive: false }, { new: true });
+    if (!deactivatedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json({ message: 'User deactivated successfully', deactivatedUser });
+    } catch (error) {
+        res.status(500).json({ message: 'Error deactivating user' });
+    }
+});
+
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);

@@ -44,6 +44,21 @@
 
 ![Alt text](imgs/users.jpg)
 
+## **Part 5: Update and Delete Users**
+
+- [x] Update index.js to include update and delete routes:
+- [x] Route to update a user (PUT /users/:id).
+
+![Alt text](imgs/put.jpg)
+
+- [x] Route to deactivate a user (PUT /users/:id/deactivate).
+
+![Alt text](imgs/deactivate.jpg)
+
+- [x] Route to delete a user (DELETE /users/:id).
+
+![Alt text](imgs/delete.jpg)
+
 ## **Bonus:** 
 - deploy to render.com. You will need to set up the environment on render.com and set up the whitelist on mongodb.com
 
